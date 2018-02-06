@@ -25,7 +25,7 @@ function stringToBytes(string) {
 //the bluefruit UART Service
 var blue ={
 	serviceUUID: "6E400001-B5A3-F393-­E0A9-­E50E24DCCA9E",
-	 characteristicUUID:"6E400002-B5A3-F393-­E0A9-­E50E24DCCA9E"  //Read
+	 characteristicUUID:"6E400003-B5A3-F393-­E0A9-­E50E24DCCA9E"  //write
 }
 
 var ConnDeviceId;
@@ -65,9 +65,11 @@ function onDiscoverDevice(device){
 function conn(){
 	document.getElementById("debugDiv").innerHTML ="";
 	var  deviceTouch= event.srcElement.innerHTML;
-	document.getElementById("debugDiv").innerHTML += "Ok " + deviceTouch;
+	document.getElementById("debugDiv").innerHTML += deviceTouch;
+	//document.getElementById("debugDiv").innerHTML += <br>deviceTouch;
 	var deviceTouchArr = deviceTouch.split(" ");
 	ConnDeviceId = deviceTouchArr[1];
+	document.getElementById("debugDiv").innerHTML += <br>deviceTouchArr[0]+<br>deviceTouchArr[1];
 	
 	 /*
 	 for(i=0;i<deviceList.length;i++){
