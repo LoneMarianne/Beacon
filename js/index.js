@@ -56,7 +56,7 @@ function refreshDeviceList(){
 function onDiscoverDevice(device){
 	//deviceList.push(device);
 	var listItem = document.createElement('li'),
-            html = device.name+ " " + device.id;
+            html = device.name+ "," + device.id;
         listItem.innerHTML = html;
         	document.getElementById("bleDeviceList").appendChild(listItem);
 }
@@ -67,7 +67,7 @@ function conn(){
 	var  deviceTouch= event.srcElement.innerHTML;
 	document.getElementById("debugDiv").innerHTML += deviceTouch;
 
-	var deviceTouchArr = deviceTouch.split(" ");
+	var deviceTouchArr = deviceTouch.split(",");
 	ConnDeviceId = deviceTouchArr[1];
 	document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1];
 	
