@@ -24,8 +24,9 @@ function stringToBytes(string) {
 
 //the bluefruit UART Service
 var blue ={
-	serviceUUID: "6E400001-B5A3-F393-­E0A9-­E50E24DCCA9E",
-	 characteristicUUID:"6E400003-B5A3-F393-­E0A9-­E50E24DCCA9E"  //write
+	serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
+    txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
+    rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
 
 var ConnDeviceId;
@@ -85,7 +86,8 @@ function conn(){
 function onConnect(){
 	document.getElementById("statusDiv").innerHTML = " Status: Connected";
 	document.getElementById("bleId").innerHTML = ConnDeviceId;
-	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.characteristicUUID, onData, onError);
+	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
+	 // ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, app.onData, app.onError);
 }
 
 function onConnError(){
@@ -104,7 +106,7 @@ function data(txt){
 
 function sendData() { // send data to Arduino
 	 var data = stringToBytes(messageInput.value);
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.characteristicUUID, data, onSend, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
 	
 function onSend(){
