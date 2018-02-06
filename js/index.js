@@ -66,10 +66,10 @@ function conn(){
 	document.getElementById("debugDiv").innerHTML ="";
 	var  deviceTouch= event.srcElement.innerHTML;
 	document.getElementById("debugDiv").innerHTML += deviceTouch;
-	//document.getElementById("debugDiv").innerHTML += <br>deviceTouch;
+
 	var deviceTouchArr = deviceTouch.split(" ");
 	ConnDeviceId = deviceTouchArr[1];
-	document.getElementById("debugDiv").innerHTML += <br>deviceTouchArr[0]+<br>deviceTouchArr[1];
+	document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1];
 	
 	 /*
 	 for(i=0;i<deviceList.length;i++){
@@ -78,7 +78,7 @@ function conn(){
 		 }
 		 else ConnDeviceId="Ikke fundet";
 	 }*/
-	document.getElementById("debugDiv").innerHTML 	+= " test : "+ ConnDeviceId;
+	//document.getElementById("debugDiv").innerHTML 	+= " test : "+ ConnDeviceId;
 	ble.connect(ConnDeviceId, onConnect, onConnError);
  }
  
